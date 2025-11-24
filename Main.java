@@ -18,8 +18,51 @@ public class Main {
             System.out.println("ArrayTabulatedFunction создана успешно!");
             System.out.println("Границы: [" + func.getLeftDomainBorder() + ", " + func.getRightDomainBorder() + "]");
             System.out.println("Количество точек: " + func.getPointsCount());
+            
+            System.out.println("\n--- ДЕТАЛЬНАЯ ДЕМОНСТРАЦИЯ РАБОТЫ ARRAY ---");
+            
+            // 1. Начальное состояние
+            System.out.println("1. НАЧАЛЬНОЕ СОСТОЯНИЕ ФУНКЦИИ:");
+            printFunctionTable(func);
+            
+            // 2. Добавление точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("2. ДОБАВЛЕНИЕ ТОЧКИ (2.5, 6.25):");
+            System.out.println("ФУНКЦИЯ ДО добавления:");
+            printFunctionTable(func);
+            func.addPoint(new functions.FunctionPoint(2.5, 6.25));
+            System.out.println("ФУНКЦИЯ ПОСЛЕ добавления:");
+            printFunctionTable(func);
+            
+            // 3. Изменение точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("3. ИЗМЕНЕНИЕ ТОЧКИ [2]:");
+            System.out.println("ФУНКЦИЯ ДО изменения:");
+            printFunctionTable(func);
+            func.setPoint(2, new functions.FunctionPoint(2.0, 10.0));
+            System.out.println("ФУНКЦИЯ ПОСЛЕ изменения:");
+            printFunctionTable(func);
+            
+            // 4. Изменение координаты Y - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("4. ИЗМЕНЕНИЕ КООРДИНАТЫ Y ТОЧКИ [1]:");
+            System.out.println("ФУНКЦИЯ ДО изменения:");
+            printFunctionTable(func);
+            func.setPointY(1, 2.0);
+            System.out.println("ФУНКЦИЯ ПОСЛЕ изменения:");
+            printFunctionTable(func);
+            
+            // 5. Удаление точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("5. УДАЛЕНИЕ ТОЧКИ [2]:");
+            System.out.println("ФУНКЦИЯ ДО удаления:");
+            printFunctionTable(func);
+            func.deletePoint(2);
+            System.out.println("ФУНКЦИЯ ПОСЛЕ удаления:");
+            printFunctionTable(func);
+            
+            // 6. Демонстрация интерполяции
+            System.out.println("6. ВЫЧИСЛЕНИЕ ЗНАЧЕНИЙ ФУНКЦИИ:");
+            printFunctionValues(func, new double[]{0.5, 1.5, 2.5, 3.5, 4.5});
+            
         } catch (Exception e) {
-            System.out.println("Ошибка при создании ArrayTabulatedFunction: " + e.getMessage());
+            System.out.println("Ошибка в Array: " + e.getMessage());
         }
     }
 
@@ -32,58 +75,78 @@ public class Main {
             System.out.println("Границы: [" + func.getLeftDomainBorder() + ", " + func.getRightDomainBorder() + "]");
             System.out.println("Количество точек: " + func.getPointsCount());
             
-            // ↓↓↓ ДОБАВИТЬ ЭТИ ТЕСТЫ ↓↓↓
+            System.out.println("\n--- ДЕТАЛЬНАЯ ДЕМОНСТРАЦИЯ РАБОТЫ LINKEDLIST ---");
             
-            System.out.println("\n--- Детальное тестирование методов LinkedList ---");
+            // 1. Начальное состояние
+            System.out.println("1. НАЧАЛЬНОЕ СОСТОЯНИЕ ФУНКЦИИ:");
+            printFunctionTable(func);
             
-            // Тест getPoint()
-            System.out.println("1. getPoint():");
-            System.out.println("   Точка 0: x=" + func.getPoint(0).getX() + ", y=" + func.getPoint(0).getY());
-            System.out.println("   Точка 3: x=" + func.getPoint(3).getX() + ", y=" + func.getPoint(3).getY());
+            // 2. Добавление точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("2. ДОБАВЛЕНИЕ ТОЧКИ (2.5, 6.25):");
+            System.out.println("ФУНКЦИЯ ДО добавления:");
+            printFunctionTable(func);
+            func.addPoint(new functions.FunctionPoint(2.5, 6.25));
+            System.out.println("ФУНКЦИЯ ПОСЛЕ добавления:");
+            printFunctionTable(func);
             
-            // Тест getFunctionValue() - интерполяция
-            System.out.println("2. getFunctionValue() - интерполяция:");
-            System.out.println("   f(0.5) = " + func.getFunctionValue(0.5));
-            System.out.println("   f(2.5) = " + func.getFunctionValue(2.5));
+            // 3. Изменение точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("3. ИЗМЕНЕНИЕ ТОЧКИ [2]:");
+            System.out.println("ФУНКЦИЯ ДО изменения:");
+            printFunctionTable(func);
+            func.setPoint(2, new functions.FunctionPoint(2.0, 10.0));
+            System.out.println("ФУНКЦИЯ ПОСЛЕ изменения:");
+            printFunctionTable(func);
             
-            // Тест addPoint()
-            System.out.println("3. addPoint():");
-            func.addPoint(new functions.FunctionPoint(1.5, 2.25));
-            System.out.println("   Добавлена точка (1.5, 2.25), теперь точек: " + func.getPointsCount());
+            // 4. Изменение координаты Y - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("4. ИЗМЕНЕНИЕ КООРДИНАТЫ Y ТОЧКИ [1]:");
+            System.out.println("ФУНКЦИЯ ДО изменения:");
+            printFunctionTable(func);
+            func.setPointY(1, 2.0);
+            System.out.println("ФУНКЦИЯ ПОСЛЕ изменения:");
+            printFunctionTable(func);
             
-            // Тест deletePoint()
-            System.out.println("4. deletePoint():");
-            func.deletePoint(2); // Удаляем точку с индексом 2
-            System.out.println("   Удалена точка с индексом 2, теперь точек: " + func.getPointsCount());
+            // 5. Удаление точки - ПОКАЗЫВАЕМ ДО и ПОСЛЕ
+            System.out.println("5. УДАЛЕНИЕ ТОЧКИ [2]:");
+            System.out.println("ФУНКЦИЯ ДО удаления:");
+            printFunctionTable(func);
+            func.deletePoint(2);
+            System.out.println("ФУНКЦИЯ ПОСЛЕ удаления:");
+            printFunctionTable(func);
             
-            // Тест setPoint()
-            System.out.println("5. setPoint():");
-            func.setPoint(1, new functions.FunctionPoint(1.2, 1.44));
-            System.out.println("   Изменена точка 1 на (1.2, 1.44)");
+            // 6. Демонстрация интерполяции
+            System.out.println("6. ВЫЧИСЛЕНИЕ ЗНАЧЕНИЙ ФУНКЦИИ:");
+            printFunctionValues(func, new double[]{0.5, 1.5, 2.5, 3.5, 4.5});
             
-            // Тест setPointX() и setPointY()
-            System.out.println("6. setPointX() и setPointY():");
-            func.setPointX(2, 3.5);
-            func.setPointY(2, 12.25);
-            System.out.println("   Точка 2 изменена на: x=" + func.getPointX(2) + ", y=" + func.getPointY(2));
-        
-            // Финальная проверка
-            System.out.println("7. Финальное состояние:");
-            System.out.println("   Количество точек: " + func.getPointsCount());
-            System.out.println("   Границы: [" + func.getLeftDomainBorder() + ", " + func.getRightDomainBorder() + "]");
-        
-            // Вывод всех точек
-            System.out.println("   Все точки:");
-            for (int i = 0; i < func.getPointsCount(); i++) {
-                System.out.println("     " + i + ": (" + func.getPoint(i).getX() + ", " + func.getPoint(i).getY() + ")");
-            }
-        
         } catch (Exception e) {
-            System.out.println("Ошибка при создании LinkedListTabulatedFunction: " + e.getMessage());
+            System.out.println("Ошибка в LinkedList: " + e.getMessage());
         }
+    }
+    
+    // Метод для вывода таблицы функции (все точки)
+    private static void printFunctionTable(functions.TabulatedFunction func) {
+        System.out.println("   Таблица функции:");
+        System.out.println("   Все точки функции:");
+        for (int i = 0; i < func.getPointsCount(); i++) {
+            functions.FunctionPoint point = func.getPoint(i);
+            System.out.printf("   Индекс %d: X = %.3f, Y = %.3f%n", i, point.getX(), point.getY());
+        }
+        System.out.println("   Всего точек: " + func.getPointsCount());
+        System.out.println("   Границы: [" + func.getLeftDomainBorder() + ", " + func.getRightDomainBorder() + "]");
+        System.out.println();
+    }
+    
+    // Метод для вывода вычисленных значений функции
+    private static void printFunctionValues(functions.TabulatedFunction func, double[] xValues) {
+        System.out.println("   Вычисленные значения:");
+        for (double x : xValues) {
+            double y = func.getFunctionValue(x);
+            System.out.printf("   f(%.3f) = %.3f%n", x, y);
+        }
+        System.out.println();
     }
 
     private static void testExceptions() {
+        // Тесты исключений остаются без изменений
         System.out.println("1. Тест неверных границ:");
         try {            
             functions.TabulatedFunction func = new functions.ArrayTabulatedFunction(10.0, 5.0, 5);
@@ -102,7 +165,7 @@ public class Main {
         try {            
             double[] values = {0.0, 1.0, 4.0};
             functions.TabulatedFunction func = new functions.ArrayTabulatedFunction(0.0, 2.0, values);
-            func.getPoint(10); // Неверный индекс
+            func.getPoint(10);
         } catch (functions.FunctionPointIndexOutOfBoundsException e) {
             System.out.println("Поймано исключение: " + e.getMessage());
         }
@@ -120,7 +183,7 @@ public class Main {
         try {            
             double[] values = {0.0, 1.0, 4.0};
             functions.TabulatedFunction func = new functions.ArrayTabulatedFunction(0.0, 2.0, values);
-            func.addPoint(new functions.FunctionPoint(1.0, 5.0)); // Дублирует X=1.0
+            func.addPoint(new functions.FunctionPoint(1.0, 5.0));
         } catch (functions.InappropriateFunctionPointException e) {
             System.out.println("Поймано исключение: " + e.getMessage());
         }
@@ -131,7 +194,7 @@ public class Main {
             functions.TabulatedFunction func = new functions.LinkedListTabulatedFunction(0.0, 2.0, values);
             func.deletePoint(0);
             func.deletePoint(0);
-            func.deletePoint(0); // Попытка удалить последнюю точку            
+            func.deletePoint(0);
         } catch (IllegalStateException e) {
             System.out.println("Поймано исключение: " + e.getMessage());
         }
